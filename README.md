@@ -1,27 +1,22 @@
 # OAuth2orize
 
 OAuth2orize is an authorization server toolkit for Node.js.  It provides a suite
-of middleware that, combined with [Passport](http://passportjs.org/)
+of middleware that, combined with [Passport](https://github.com/passport-next)
 authentication strategies and application-specific route handlers, can be used
 to assemble a server that implements the [OAuth 2.0](http://tools.ietf.org/html/rfc6749)
 protocol.
 
 Status:
-[![Build](https://img.shields.io/travis/jaredhanson/oauth2orize.svg)](https://travis-ci.org/jaredhanson/oauth2orize)
-[![Coverage](https://img.shields.io/coveralls/jaredhanson/oauth2orize.svg)](https://coveralls.io/r/jaredhanson/oauth2orize)
-[![Dependencies](https://img.shields.io/david/jaredhanson/oauth2orize.svg)](https://david-dm.org/jaredhanson/oauth2orize)
-
-
-## Sponsorship
-
-OAuth2orize is open source software.  Ongoing development is made possible by
-generous contributions from [individuals and corporations](https://github.com/jaredhanson/oauth2orize/blob/master/SPONSORS.md).
-To learn more about how you can help keep this project financially sustainable,
-please visit Jared Hanson's page on [Patreon](https://www.patreon.com/jaredhanson).
+[![NPM version](https://img.shields.io/npm/v/@passport-next/oauth2orize.svg)](https://www.npmjs.com/package/@passport-next/oauth2orize)
+[![Build Status](https://travis-ci.org/passport-next/oauth2orize.svg?branch=master)](https://travis-ci.org/passport-next/oauth2orize)
+[![Coverage Status](https://coveralls.io/repos/github/passport-next/oauth2orize/badge.svg?branch=master)](https://coveralls.io/github/passport-next/oauth2orize?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2960cb01986b03183ebb/maintainability)](https://codeclimate.com/github/passport-next/oauth2orize/maintainability)
+[![Dependencies](https://david-dm.org/passport-next/oauth2orize.png)](https://david-dm.org/passport-next/oauth2orize)
+<!--[![SAST](https://gitlab.com/passport-next/oauth2orize/badges/master/build.svg)](https://gitlab.com/passport-next/oauth2orize/badges/master/build.svg)-->
 
 ## Install
 
-    $ npm install oauth2orize
+    $ npm install @passport-next/oauth2orize
 
 ## Usage
 
@@ -155,7 +150,7 @@ app.post('/token',
   server.errorHandler());
 ```
 
-[Passport](http://passportjs.org/) strategies are used to authenticate the
+[Passport](https://github.com/passport-next) strategies are used to authenticate the
 client, in this case using either an HTTP Basic authentication header (as
 provided by [passport-http](https://github.com/jaredhanson/passport-http)) or
 client credentials in the request body (as provided by 
@@ -178,25 +173,13 @@ app.get('/api/userinfo',
 ```
 
 In this example, bearer tokens are issued, which are then authenticated using
-an HTTP Bearer authentication header (as provided by [passport-http-bearer](https://github.com/jaredhanson/passport-http-bearer))
+an HTTP Bearer authentication header (as provided by [passport-http-bearer](https://github.com/passport-next/passport-http-bearer))
 
 ## Examples
 
 This [example](https://github.com/gerges-beshay/oauth2orize-examples) demonstrates
 how to implement an OAuth service provider, complete with protected API access.
 
-## Related Modules
-
-- [oauth2orize-openid](https://github.com/jaredhanson/oauth2orize-openid) — Extensions to support OpenID Connect
-- [oauth2orize-jwt-bearer](https://github.com/xtuple/oauth2orize-jwt-bearer) — Exchange JWT assertions for access tokens
-- [passport-http-bearer](https://github.com/jaredhanson/passport-http-bearer) — Bearer token authentication strategy for APIs
-
 ## Debugging
 
 oauth2orize uses the [debug module](https://www.npmjs.org/package/debug).  You can enable debugging messages on the console by doing ```export DEBUG=oauth2orize``` before running your application.
-
-## License
-
-[The MIT License](http://opensource.org/licenses/MIT)
-
-Copyright (c) 2012-2018 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>

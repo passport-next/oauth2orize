@@ -417,7 +417,7 @@ describe('authorization', function() {
       it('should start transaction', function() {
         expect(request.oauth2).to.be.an('object');
         expect(request.oauth2.transactionID).to.be.a('string');
-        expect(request.oauth2.transactionID).to.have.length(8);
+        expect(request.oauth2.transactionID).to.have.length(16);
         expect(request.oauth2.client.id).to.equal('1234');
         expect(request.oauth2.client.name).to.equal('Example');
         expect(request.oauth2.redirectURI).to.equal('http://example.com/auth/callback');
@@ -473,7 +473,7 @@ describe('authorization', function() {
       it('should start transaction', function() {
         expect(request.oauth2).to.be.an('object');
         expect(request.oauth2.transactionID).to.be.a('string');
-        expect(request.oauth2.transactionID).to.have.length(8);
+        expect(request.oauth2.transactionID).to.have.length(16);
         expect(request.oauth2.client.id).to.equal('1234');
         expect(request.oauth2.client.name).to.equal('Example');
         expect(request.oauth2.redirectURI).to.equal('http://example.com/auth/callback');
@@ -532,7 +532,7 @@ describe('authorization', function() {
       it('should start transaction', function() {
         expect(request.oauth2).to.be.an('object');
         expect(request.oauth2.transactionID).to.be.a('string');
-        expect(request.oauth2.transactionID).to.have.length(8);
+        expect(request.oauth2.transactionID).to.have.length(16);
         expect(request.oauth2.client.id).to.equal('1234');
         expect(request.oauth2.client.name).to.equal('Example');
         expect(request.oauth2.redirectURI).to.equal('http://example.com/auth/callback');
@@ -589,7 +589,7 @@ describe('authorization', function() {
       it('should add transaction', function() {
         expect(request.oauth2).to.be.an('object');
         expect(request.oauth2.transactionID).to.be.a('string');
-        expect(request.oauth2.transactionID).to.have.length(8);
+        expect(request.oauth2.transactionID).to.have.length(16);
         expect(request.oauth2.client.id).to.equal('1234');
         expect(request.oauth2.client.name).to.equal('Example');
         expect(request.oauth2.redirectURI).to.equal('http://example.com/auth/callback');
@@ -643,7 +643,7 @@ describe('authorization', function() {
       it('should start transaction', function() {
         expect(request.oauth2).to.be.an('object');
         expect(request.oauth2.transactionID).to.be.a('string');
-        expect(request.oauth2.transactionID).to.have.length(8);
+        expect(request.oauth2.transactionID).to.have.length(16);
         expect(request.oauth2.client.id).to.equal('1234');
         expect(request.oauth2.client.name).to.equal('Example');
         expect(request.oauth2.redirectURI).to.equal('http://example.com/auth/callback');
@@ -778,7 +778,7 @@ describe('authorization', function() {
         it('should start transaction', function() {
           expect(request.oauth2).to.be.an('object');
           expect(request.oauth2.transactionID).to.be.a('string');
-          expect(request.oauth2.transactionID).to.have.length(12);
+          expect(request.oauth2.transactionID).to.have.length(24);
           expect(request.oauth2.client.id).to.equal('1234');
           expect(request.oauth2.client.name).to.equal('Example');
           expect(request.oauth2.redirectURI).to.equal('http://example.com/auth/callback');
@@ -827,7 +827,7 @@ describe('authorization', function() {
         it('should add transaction', function() {
           expect(request.oauth2).to.be.an('object');
           expect(request.oauth2.transactionID).to.be.a('string');
-          expect(request.oauth2.transactionID).to.have.length(8);
+          expect(request.oauth2.transactionID).to.have.length(16);
           expect(request.oauth2.client.id).to.equal('1234');
           expect(request.oauth2.client.name).to.equal('Example');
           expect(request.oauth2.redirectURI).to.equal('http://example.com/auth/callback');
