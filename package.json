@@ -33,20 +33,25 @@
   ],
   "main": "./lib",
   "dependencies": {
-    "debug": "3.x.x",
-    "lodash": "4.x.x"
+    "debug": "^4.1.1",
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
-    "make-node": "0.3.x",
-    "mocha": "5.x.x",
-    "chai": "4.x.x",
+    "chai": "^4.2.0",
     "chai-connect-middleware": "0.3.x",
-    "chai-oauth2orize-grant": "0.3.x"
+    "chai-oauth2orize-grant": "0.3.x",
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.16.0",
+    "make-node": "0.3.x",
+    "mocha": "^6.0.2"
   },
   "engines": {
     "node": ">=6"
   },
   "scripts": {
+    "lint": "eslint --ext .js . --max-warnings 0",
+    "lintfix": "eslint --ext .js . --fix",
     "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js test/**/*.test.js"
   }
 }

@@ -1,81 +1,80 @@
-var Server = require('../lib/server');
-  
+const Server = require('../lib/server');
 
-describe('Server', function() {
-  
-  describe('newly initialized instance', function() {
-    var server = new Server();
-    
-    it('should wrap authorization middleware', function() {
+
+describe('Server', () => {
+  describe('newly initialized instance', () => {
+    const server = new Server();
+
+    it('should wrap authorization middleware', () => {
       expect(server.authorization).to.be.a('function');
       expect(server.authorization).to.have.length(4);
       expect(server.authorize).to.equal(server.authorization);
     });
-    
-    it('should wrap resume middleware', function() {
+
+    it('should wrap resume middleware', () => {
       expect(server.resume).to.be.a('function');
       expect(server.resume).to.have.length(3);
     });
-    
-    it('should wrap decision middleware', function() {
+
+    it('should wrap decision middleware', () => {
       expect(server.decision).to.be.a('function');
       expect(server.decision).to.have.length(3);
     });
-    
-    it('should wrap authorizationErrorHandler middleware', function() {
+
+    it('should wrap authorizationErrorHandler middleware', () => {
       expect(server.authorizationErrorHandler).to.be.a('function');
       expect(server.authorizationErrorHandler).to.have.length(1);
       expect(server.authorizeError).to.equal(server.authorizationErrorHandler);
       expect(server.authorizationError).to.equal(server.authorizationErrorHandler);
     });
-    
-    it('should wrap token middleware', function() {
+
+    it('should wrap token middleware', () => {
       expect(server.token).to.be.a('function');
       expect(server.token).to.have.length(1);
     });
-    
-    it('should wrap errorHandler middleware', function() {
+
+    it('should wrap errorHandler middleware', () => {
       expect(server.errorHandler).to.be.a('function');
       expect(server.errorHandler).to.have.length(1);
     });
-    
-    it('should have no request parsers', function() {
+
+    it('should have no request parsers', () => {
       expect(server._reqParsers).to.have.length(0);
     });
-    
-    it('should have no response handlers', function() {
+
+    it('should have no response handlers', () => {
       expect(server._resHandlers).to.have.length(0);
     });
-    
-    it('should have no error handlers', function() {
+
+    it('should have no error handlers', () => {
       expect(server._errHandlers).to.have.length(0);
     });
-    
-    it('should have no exchanges', function() {
+
+    it('should have no exchanges', () => {
       expect(server._exchanges).to.have.length(0);
     });
-    
-    it('should have no serializers or deserializers', function() {
+
+    it('should have no serializers or deserializers', () => {
       expect(server._serializers).to.have.length(0);
       expect(server._deserializers).to.have.length(0);
     });
   });
-  
-  describe('#authorization', function() {
-    var server = new Server();
-    
-    it('should create function handler', function() {
-      var handler = server.authorization(function(){});
+
+  describe('#authorization', () => {
+    const server = new Server();
+
+    it('should create function handler', () => {
+      const handler = server.authorization(() => {});
       expect(handler).to.be.an('function');
       expect(handler).to.have.length(3);
     });
   });
-  
-  describe('#resume', function() {
-    var server = new Server();
-    
-    it('should create handler stack with two functions', function() {
-      var handler = server.resume(function(){});
+
+  describe('#resume', () => {
+    const server = new Server();
+
+    it('should create handler stack with two functions', () => {
+      const handler = server.resume(() => {});
       expect(handler).to.be.an('array');
       expect(handler).to.have.length(2);
       expect(handler[0]).to.be.a('function');
@@ -83,16 +82,16 @@ describe('Server', function() {
       expect(handler[1]).to.be.a('function');
       expect(handler[1]).to.have.length(3);
     });
-    
-    it('should create function handler when transaction loader is disabled', function() {
-      var handler = server.resume({ loadTransaction: false }, function(){});
+
+    it('should create function handler when transaction loader is disabled', () => {
+      const handler = server.resume({ loadTransaction: false }, () => {});
       expect(handler).to.be.an('function');
       expect(handler).to.have.length(3);
     });
-    
-    it('should create handler stack with custom transaction loader', function() {
-      function loadTransaction(req, res, next) {};
-      var handler = server.resume({ loadTransaction: loadTransaction }, function(){});
+
+    it('should create handler stack with custom transaction loader', () => {
+      function loadTransaction(req, res, next) {}
+      const handler = server.resume({ loadTransaction }, () => {});
       expect(handler).to.be.an('array');
       expect(handler).to.have.length(2);
       expect(handler[0]).to.be.a('function');
@@ -101,10 +100,10 @@ describe('Server', function() {
       expect(handler[1]).to.be.a('function');
       expect(handler[1]).to.have.length(3);
     });
-    
-    it('should create handler stack with custom transaction loader using non-object signature', function() {
-      function loadTransaction(req, res, next) {};
-      var handler = server.resume(loadTransaction, function(){}, function(){});
+
+    it('should create handler stack with custom transaction loader using non-object signature', () => {
+      function loadTransaction(req, res, next) {}
+      const handler = server.resume(loadTransaction, () => {}, () => {});
       expect(handler).to.be.an('array');
       expect(handler).to.have.length(2);
       expect(handler[0]).to.be.a('function');
@@ -114,12 +113,12 @@ describe('Server', function() {
       expect(handler[1]).to.have.length(3);
     });
   });
-  
-  describe('#decision', function() {
-    var server = new Server();
-    
-    it('should create handler stack with two functions', function() {
-      var handler = server.decision();
+
+  describe('#decision', () => {
+    const server = new Server();
+
+    it('should create handler stack with two functions', () => {
+      const handler = server.decision();
       expect(handler).to.be.an('array');
       expect(handler).to.have.length(2);
       expect(handler[0]).to.be.a('function');
@@ -127,19 +126,19 @@ describe('Server', function() {
       expect(handler[1]).to.be.a('function');
       expect(handler[1]).to.have.length(3);
     });
-    
-    it('should create function handler when transaction loader is disabled', function() {
-      var handler = server.decision({ loadTransaction: false });
+
+    it('should create function handler when transaction loader is disabled', () => {
+      const handler = server.decision({ loadTransaction: false });
       expect(handler).to.be.an('function');
       expect(handler).to.have.length(3);
     });
   });
-  
-  describe('#authorizationErrorHandler', function() {
-    var server = new Server();
-    
-    it('should create function error handler', function() {
-      var handler = server.authorizationErrorHandler();
+
+  describe('#authorizationErrorHandler', () => {
+    const server = new Server();
+
+    it('should create function error handler', () => {
+      const handler = server.authorizationErrorHandler();
       expect(handler).to.be.an('array');
       expect(handler).to.have.length(2);
       expect(handler[0]).to.be.a('function');
@@ -148,25 +147,24 @@ describe('Server', function() {
       expect(handler[1]).to.have.length(4);
     });
   });
-  
-  describe('#token', function() {
-    var server = new Server();
-    
-    it('should create function handler', function() {
-      var handler = server.token();
+
+  describe('#token', () => {
+    const server = new Server();
+
+    it('should create function handler', () => {
+      const handler = server.token();
       expect(handler).to.be.an('function');
       expect(handler).to.have.length(3);
     });
   });
-  
-  describe('#errorHandler', function() {
-    var server = new Server();
-    
-    it('should create function error handler', function() {
-      var handler = server.errorHandler();
+
+  describe('#errorHandler', () => {
+    const server = new Server();
+
+    it('should create function error handler', () => {
+      const handler = server.errorHandler();
       expect(handler).to.be.an('function');
       expect(handler).to.have.length(4);
     });
   });
-  
 });
