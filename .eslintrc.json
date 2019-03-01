@@ -1,0 +1,20 @@
+{
+    "env": {
+      "mocha": true,
+      "node": true
+    },
+    "extends": [
+      "airbnb-base"
+    ],
+    "rules": {
+      "comma-dangle": 0,
+      "no-underscore-dangle": 0,
+      "no-param-reassign": 0,
+      "prefer-destructuring": 0,
+      "no-restricted-properties":0,
+      "no-plusplus":0,
+      "no-inner-declarations":0,
+      "no-proto":0,
+      "no-caller":0
+    }
+  }
